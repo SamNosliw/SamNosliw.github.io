@@ -360,12 +360,74 @@ calculateHeat = function() {
     $('input[name="clockspeed"]:checked').prev().prev().click();
     calculateHeat();
   }
+
+  var seed = $("#rig td").map(function() {
+    if (~$(this).attr("class").indexOf('2'))
+      return $(this).attr("class").replace('psuV', 'v').charAt(0).toUpperCase();
+    else
+      return $(this).attr("class").replace('psuV', 'v').charAt(0);
+  }).get().join('') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
+  $('#seed').val(seed);
 }
 
 $(document).ready(function() {
-	calculateHeat();
+  //calculateHeat();
   $('input[name="clockspeed"]').click(function(event) {
     calculateHeat();
+  });
+
+  $("#seed").on("input", function() {
+    $("#rig tr td").removeClass();
+    var str = $(this).val();
+    loadSeed:
+      for (let i = 0; i < str.length; i++) {
+        switch (str[i]) {
+          case "b":
+            $("#rig tr td").eq(i).addClass("blank");
+            break;
+          case "e":
+            $("#rig tr td").eq(i).addClass("ecpu");
+            break;
+          case "c":
+            $("#rig tr td").eq(i).addClass("cpu");
+            break;
+          case "h":
+            $("#rig tr td").eq(i).addClass("hcpu");
+            break;
+          case "f":
+            $("#rig tr td").eq(i).addClass("fan");
+            break;
+          case "w":
+            $("#rig tr td").eq(i).addClass("water");
+            break;
+          case "s":
+            $("#rig tr td").eq(i).addClass("sink");
+            break;
+          case "p":
+          case "P":
+            $("#rig tr td").eq(i).addClass("psu" + (str[i] == str[i].toUpperCase() ? 2 : ''));
+            break;
+          case "v":
+          case "V":
+            $("#rig tr td").eq(i).addClass("psuV" + (str[i] == str[i].toUpperCase() ? 2 : ''));
+            break;
+          default:
+            break loadSeed;
+
+        }
+      }
+    $('#clock-' + str.slice(-1)).click();
+  });
+  if ((new URL(location.href)).searchParams.get('r'))
+    $('#seed').val((new URL(location.href)).searchParams.get('r'));
+  $('#seed').trigger("input");
+
+  $('#copy-seed').click(function() {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val('https://https://sliw.co/rig?r=' + $('#seed').val()).select();
+    document.execCommand("copy");
+    $temp.remove();
   });
 
   $('#rig').click(function(event) {
