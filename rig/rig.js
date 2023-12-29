@@ -348,7 +348,10 @@ calculateHeat = function() {
   }
 
   var x = mips/100000;
-  x = 2.2237031*Math.sqrt(x) - 0.2521033*Math.log(x) + 0.0003631*x*x*x - 0.0118249*x*x - 1.2129204;
+  //x = 2.2237031*Math.sqrt(x) - 0.2521033*Math.log(x) + 0.0003631*x*x*x - 0.0118249*x*x - 1.2129204;
+  //x = 1.249476*Math.sqrt(x) + 0.417513*Math.log(x) - 0.001395*x*x - 0.331211;
+  x = 1.450654*Math.sqrt(x) + 0.240309*Math.log(x) - 0.001976*x*x - 0.485498;
+  //var x = 0.0052 * Math.sqrt(mips) - 0.6252;
   $("#brute").html(Math.round(10000*x)/10000);
   
   $("#mips").html(commaSeparateNumber(mips));
