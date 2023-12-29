@@ -348,7 +348,7 @@ calculateHeat = function() {
   }
 
   $("#mips").html(commaSeparateNumber(mips));
-  $("#brute").html(Math.round((0.0052 * Math.sqrt(mips) - 0.6252) * 10000) / 10000);
+  $("#brute").html(Math.round(14900*Math.sqrt(mips/100000-0.6666666))/10000);
   $("#comp").html(comp);
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
