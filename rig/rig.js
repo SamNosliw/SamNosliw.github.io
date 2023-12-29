@@ -8,9 +8,9 @@ function commaSeparateNumber(val) {
 calculateHeat = function() {
   var clockspeed = $('input[name="clockspeed"]:checked').val();
 
-  $("#rig tr td").empty();
-  $("#rig tr td").removeClass("overheat hot cold");
-  $("#rig tr td.ecpu").each(function(i, obj) {
+  $(".rig tr td").empty();
+  $(".rig tr td").removeClass("overheat hot cold");
+  $(".rig tr td.ecpu").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).append(11);
     $(this).next().append(1);
@@ -22,7 +22,7 @@ calculateHeat = function() {
     $(this).closest('tr').prev().children().eq(cellIndex).append(1);
     $(this).closest('tr').prev().children().eq(cellIndex).prev().append(1);
   });
-  $("#rig tr td.cpu").each(function(i, obj) {
+  $(".rig tr td.cpu").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).append(111111);
     $(this).next().next().append(11);
@@ -54,7 +54,7 @@ calculateHeat = function() {
     $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().append(11);
     $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().append(11);
   });
-  $("#rig tr td.hcpu").each(function(i, obj) {
+  $(".rig tr td.hcpu").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).append(111111111111111);
     $(this).next().next().next().next().append(111);
@@ -147,12 +147,12 @@ calculateHeat = function() {
     $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().prev().prev().append(111);
   });
 
-  $("#rig tr td").each(function(i, obj) {
+  $(".rig tr td").each(function(i, obj) {
     $(this).data("heat", $(this).text().length * clockspeed);
     $(this).empty();
   });
 
-  $("#rig tr td.psu").each(function(i, obj) {
+  $(".rig tr td.psu").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).append(1111);
     $(this).next().append(1111);
@@ -167,7 +167,7 @@ calculateHeat = function() {
     $(this).closest('tr').prev().children().eq(cellIndex).append(11);
     $(this).closest('tr').prev().children().eq(cellIndex).prev().append(11);
   });
-  $("#rig tr td.psuV").each(function(i, obj) {
+  $(".rig tr td.psuV").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).closest('tr').prev().children().eq(cellIndex).next().append(11);
     $(this).closest('tr').prev().children().eq(cellIndex).append(11);
@@ -183,12 +183,12 @@ calculateHeat = function() {
     $(this).closest('tr').next().next().children().eq(cellIndex).prev().append(11);
   });
 
-  $("#rig tr td").each(function(i, obj) {
+  $(".rig tr td").each(function(i, obj) {
     $(this).data("heat", $(this).data("heat") + $(this).text().length);
     $(this).empty();
   });
 
-  $("#rig tr td.sink").each(function(i, obj) {
+  $(".rig tr td.sink").each(function(i, obj) {
     var cellIndex = $(this).index();
     $(this).next().data("heat", $(this).next().data("heat") * 0.1);
     $(this).prev().data("heat", $(this).prev().data("heat") * 0.1);
@@ -196,7 +196,7 @@ calculateHeat = function() {
     $(this).closest('tr').prev().children().eq(cellIndex).data("heat", $(this).closest('tr').prev().children().eq(cellIndex).data("heat") * 0.1);
   });
 
-  $("#rig tr td.water").each(function(i, obj) {
+  $(".rig tr td.water").each(function(i, obj) {
     var cellIndex = $(this).index();
     //if ($(this).data("heat") >= 100) {
     //  $(this).addClass("overheat");
@@ -217,7 +217,7 @@ calculateHeat = function() {
 
   });
 
-  $("#rig tr td.fan").each(function(i, obj) {
+  $(".rig tr td.fan").each(function(i, obj) {
     var cellIndex = $(this).index();
     //if ($(this).data("heat") >= 100) {
     //  $(this).addClass("overheat");
@@ -281,7 +281,7 @@ calculateHeat = function() {
     $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev().append(111);
   });
 
-  $("#rig tr td").each(function(i, obj) {
+  $(".rig tr td").each(function(i, obj) {
     $(this).data("heat", $(this).data("heat") - $(this).text().length);
     $(this).empty();
   });
@@ -292,7 +292,7 @@ calculateHeat = function() {
   var comp = 0;
   var overheatComp = 0;
   var hottestComp = 0;
-  $("#rig tr td").each(function(i, obj) {
+  $(".rig tr td").each(function(i, obj) {
     comp++;
 
     if ($(this).data("heat") != 0) {
@@ -361,7 +361,7 @@ calculateHeat = function() {
     calculateHeat();
   }
 
-  var seed = $("#rig td").map(function() {
+  var seed = $(".rig td").map(function() {
     if (~$(this).attr("class").indexOf('2'))
       return $(this).attr("class").replace('psuV', 'v').charAt(0).toUpperCase();
     else
@@ -377,39 +377,39 @@ $(document).ready(function() {
   });
 
   $("#seed").on("input", function() {
-    $("#rig tr td").removeClass();
+    $(".rig tr td").removeClass();
     var str = $(this).val();
     loadSeed:
       for (let i = 0; i < str.length; i++) {
         switch (str[i]) {
           case "b":
-            $("#rig tr td").eq(i).addClass("blank");
+            $(".rig tr td").eq(i).addClass("blank");
             break;
           case "e":
-            $("#rig tr td").eq(i).addClass("ecpu");
+            $(".rig tr td").eq(i).addClass("ecpu");
             break;
           case "c":
-            $("#rig tr td").eq(i).addClass("cpu");
+            $(".rig tr td").eq(i).addClass("cpu");
             break;
           case "h":
-            $("#rig tr td").eq(i).addClass("hcpu");
+            $(".rig tr td").eq(i).addClass("hcpu");
             break;
           case "f":
-            $("#rig tr td").eq(i).addClass("fan");
+            $(".rig tr td").eq(i).addClass("fan");
             break;
           case "w":
-            $("#rig tr td").eq(i).addClass("water");
+            $(".rig tr td").eq(i).addClass("water");
             break;
           case "s":
-            $("#rig tr td").eq(i).addClass("sink");
+            $(".rig tr td").eq(i).addClass("sink");
             break;
           case "p":
           case "P":
-            $("#rig tr td").eq(i).addClass("psu" + (str[i] == str[i].toUpperCase() ? 2 : ''));
+            $(".rig tr td").eq(i).addClass("psu" + (str[i] == str[i].toUpperCase() ? 2 : ''));
             break;
           case "v":
           case "V":
-            $("#rig tr td").eq(i).addClass("psuV" + (str[i] == str[i].toUpperCase() ? 2 : ''));
+            $(".rig tr td").eq(i).addClass("psuV" + (str[i] == str[i].toUpperCase() ? 2 : ''));
             break;
           default:
             break loadSeed;
@@ -430,7 +430,7 @@ $(document).ready(function() {
     $temp.remove();
   });
 
-  $('#rig').click(function(event) {
+  $('.rig').click(function(event) {
     var target = $(event.target);
     var component = $('input[name="selector"]:checked').val();
     $td = target.closest('td');
