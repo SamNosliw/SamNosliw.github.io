@@ -1,0 +1,87 @@
+#rig {
+  border: 1px solid black;
+}
+
+#rig td {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  background: lightgrey;
+  color: coral;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  background-image: -webkit-image-set(url("https://torn.com/images/v2/crimes/10-cracking/components-1x.png") 1x, url("https://torn.com/images/v2/crimes/10-cracking/components-2x.png") 2x, url("https://torn.com/images/v2/crimes/10-cracking/components-3x.png") 3x, url("https://torn.com/images/v2/crimes/10-cracking/components-4x.png") 4x);
+}
+
+#rig td.blank {
+  background: lightgrey;
+}
+
+#rig td.ecpu {
+  background-position: -10px -10px;
+}
+
+#rig td.cpu {
+  background-position: -55px -10px;
+}
+
+#rig td.hcpu {
+  background-position: -98px -10px;
+}
+
+#rig td.fan {
+  background-position: -142px -10px;
+}
+
+#rig td.water {
+  background-position: -186px -10px;
+}
+
+#rig td.sink {
+  background-position: -230px -10px;
+}
+
+#rig td.psu {
+  background-position: -274px -10px;
+}
+
+#rig td.psu2 {
+  background-position: -310px -10px;
+}
+
+#rig td.psuV {
+  background-position: -274px -10px;
+  transform: rotate(90deg);
+}
+
+#rig td.psuV2 {
+  background-position: -310px -10px;
+  transform: rotate(90deg);
+}
+
+.overheat::before {
+  position: absolute;
+  content: '';
+  width: 2em;
+  height: 2em;
+  margin-left: -0.25em;
+  margin-top: -0.4em;
+  pointer-events: none;
+  background-position: -399px -10px;
+  background-image: -webkit-image-set(url("https://torn.com/images/v2/crimes/10-cracking/components-1x.png") 1x, url("https://torn.com/images/v2/crimes/10-cracking/components-2x.png") 2x, url("https://torn.com/images/v2/crimes/10-cracking/components-3x.png") 3x, url("https://torn.com/images/v2/crimes/10-cracking/components-4x.png") 4x);
+}
+
+.hot::before {
+  position: absolute;
+  content: '';
+  width: 2em;
+  height: 2em;
+  margin-left: -0.25em;
+  margin-top: -0.4em;
+  pointer-events: none;
+  background-position: -354px -10px;
+  background-image: -webkit-image-set(url("https://torn.com/images/v2/crimes/10-cracking/components-1x.png") 1x, url("https://torn.com/images/v2/crimes/10-cracking/components-2x.png") 2x, url("https://torn.com/images/v2/crimes/10-cracking/components-3x.png") 3x, url("https://torn.com/images/v2/crimes/10-cracking/components-4x.png") 4x);
+}
+
+#rig td.cold {
+  color: skyblue;
+}
