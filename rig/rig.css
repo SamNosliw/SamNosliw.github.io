@@ -1,10 +1,6 @@
-* {
-  box-sizing: border-box;
-}
-
 .column {
   float: left;
-  width: 33.33%;
+  margin: 1em;
 }
 
 .row:after {
@@ -15,6 +11,10 @@
 
 #disclaimer {
   margin-top: 4em;
+}
+
+.rig-box {
+  display: flex;
 }
 
 .rig {
