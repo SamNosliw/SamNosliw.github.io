@@ -347,8 +347,12 @@ calculateHeat = function() {
     $("#power-perc").html(Math.floor((powerUse / powerMax) * 100));
   }
 
+  var x = mips/100000;
+  x = 2.2237031*Math.sqrt(x) - 0.2521033*Math.log(x) + 0.0003631*x*x*x - 0.0118249*x*x - 1.2129204;
+  $("#brute").html(Math.round(10000*x)/10000);
+  
   $("#mips").html(commaSeparateNumber(mips));
-  $("#brute").html(Math.round(14900*Math.sqrt(mips/100000-0.6666666))/10000);
+  //$("#brute").html(Math.round(14900*Math.sqrt(mips/100000-0.6666666))/10000);
   $("#comp").html(comp);
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
