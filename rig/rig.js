@@ -425,7 +425,7 @@ $(document).ready(function() {
   $('#copy-seed').click(function() {
     var $temp = $("<input>");
     $("body").append($temp);
-    $temp.val('https://https://sliw.co/rig?r=' + $('#seed').val()).select();
+    $temp.val('https://sliw.co/rig?r=' + $('#seed').val()).select();
     document.execCommand("copy");
     $temp.remove();
   });
