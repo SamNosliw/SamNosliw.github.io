@@ -24,8 +24,11 @@
 #rig td {
   width: 2em;
   height: 2em;
+  max-width: 2em;
+  max-height: 2em;
   text-align: center;
   background: lightgrey;
+  text-overflow: hidden;
   color: coral;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background-image: -webkit-image-set(url("https://torn.com/images/v2/crimes/10-cracking/components-1x.png") 1x, url("https://torn.com/images/v2/crimes/10-cracking/components-2x.png") 2x, url("https://torn.com/images/v2/crimes/10-cracking/components-3x.png") 3x, url("https://torn.com/images/v2/crimes/10-cracking/components-4x.png") 4x);
