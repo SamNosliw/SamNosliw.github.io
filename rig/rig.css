@@ -3,6 +3,24 @@
   margin: 1em;
 }
 
+.buffer {
+  margin-top: 5em;
+}
+
+pre {
+  outline: 1px solid #ccc; 
+  padding: 5px; 
+  margin: 5px; 
+  overflow-y: scroll; 
+  height: 10em; 
+}
+ 
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
 .row:after {
   content: "";
   display: table;

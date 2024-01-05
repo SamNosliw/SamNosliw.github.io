@@ -395,4 +395,66 @@ $(document).ready(function() {
     }
     calculateHeat();
   });
+  $('#copy-script').click(function() {
+	  
+	  var script = { "rig-case.0": [], "rig-case.1": [], "rig-case.2": [] };
+	  $('.rig tr td').each(function(i, obj) {
+			if ($(this).hasClass("psu") || $(this).hasClass("psuV"))
+				script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)), x2: (i%5) + ($(this).hasClass("psu") ? 1 : 0), y2: Math.floor((i%25)/5)+($(this).hasClass("psu") ? 0 : 1) });
+			else if (!($(this).hasClass("psu2") || $(this).hasClass("psuV2") || $(this).hasClass("blank")))
+			script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)) });
+		});
+	  if (script["rig-case.0"].length == 0) delete script["rig-case.0"];
+	  if (script["rig-case.1"].length == 0) delete script["rig-case.1"];
+	  if (script["rig-case.2"].length == 0) delete script["rig-case.2"];
+		
+	  $('#script-box').html(syntaxHighlight(script));
+	  
+	  
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(JSON.stringify(script)).select();
+    document.execCommand("copy");
+    $temp.remove();
+  });
 });
+
+getItem = function(obj) {
+	if (obj.hasClass("ecpu"))
+		return 1;
+	if (obj.hasClass("cpu"))
+		return 2;
+	if (obj.hasClass("hcpu"))
+		return 3;
+	if (obj.hasClass("fan"))
+		return 4;
+	if (obj.hasClass("water"))
+		return 5;
+	if (obj.hasClass("sink"))
+		return 6;
+	if (obj.hasClass("psu") || obj.hasClass("psuV"))
+		return 7;
+	return 0;
+}
+
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
