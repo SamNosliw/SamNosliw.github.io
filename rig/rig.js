@@ -5,187 +5,161 @@ function commaSeparateNumber(val) {
   return val;
 }
 
+addHeat = function(heatObject, heat, modifier = 1) {
+	if (heatObject.data("heat"))
+		heatObject.data("heat", heatObject.data("heat") + heat * modifier);
+	else
+		heatObject.data("heat", heat * modifier);
+}
+addHeatSpread = function(heatObject, distance, heat, modifier = 1) {
+    var cellIndex = heatObject.index();
+	switch (distance) {
+		case 0:
+			addHeat(heatObject, heat, modifier);
+			break;
+		case 1:
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.next(), heat, modifier);
+			addHeat(heatObject.prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).prev(), heat, modifier);
+			break;
+		case 2:
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).prev().prev(), heat, modifier);
+			addHeat(heatObject.next().next(), heat, modifier);
+			addHeat(heatObject.prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).prev().prev(), heat, modifier);
+			break;
+		case 3:
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.next().next().next(), heat, modifier);
+			addHeat(heatObject.prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			break;
+		case 4:
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().next().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().next().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').next().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.next().next().next().next(), heat, modifier);
+			addHeat(heatObject.prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().prev(), heat, modifier);
+			addHeat(heatObject.closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().prev().prev(), heat, modifier);
+			break;
+	}
+}
+
 calculateHeat = function() {
   var clockspeed = $('input[name="clockspeed"]:checked').val();
+  var education = $('input[name="education"]:checked').val();
 
   $(".rig tr td").empty();
   $(".rig tr td").removeClass("overheat hot cold");
+  
   $(".rig tr td.ecpu").each(function(i, obj) {
-    var cellIndex = $(this).index();
-    $(this).append(11);
-    $(this).next().append(1);
-    $(this).prev().append(1);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(1);
-    $(this).closest('tr').next().children().eq(cellIndex).append(1);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(1);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(1);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(1);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(1);
+    addHeatSpread($(this), 0, 2.5, education * clockspeed);
+    addHeatSpread($(this), 1, 1.25, education * clockspeed);
   });
+  
   $(".rig tr td.cpu").each(function(i, obj) {
-    var cellIndex = $(this).index();
-    $(this).append(111111);
-    $(this).next().next().append(11);
-    $(this).next().append(1111);
-    $(this).prev().append(1111);
-    $(this).prev().prev().append(11);
-
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().append(11);
-
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(1111);
-    $(this).closest('tr').next().children().eq(cellIndex).append(1111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(1111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().append(11);
-
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(1111);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(1111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(1111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().append(11);
-
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).append(11);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().append(11);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().append(11);
+    addHeatSpread($(this), 0, 7.5, education * clockspeed);
+    addHeatSpread($(this), 1, 5, education * clockspeed);
+    addHeatSpread($(this), 2, 2.5, education * clockspeed);
   });
+  
   $(".rig tr td.hcpu").each(function(i, obj) {
-    var cellIndex = $(this).index();
-    $(this).append(111111111111111);
-    $(this).next().next().next().next().append(111);
-    $(this).next().next().next().append(111111);
-    $(this).next().next().append(111111111);
-    $(this).next().append(111111111111);
-    $(this).prev().append(111111111111);
-    $(this).prev().prev().append(111111111);
-    $(this).prev().prev().prev().append(111111);
-    $(this).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).next().next().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).next().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).prev().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev().prev().append(111);
-    $(this).closest('tr').next().next().next().next().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().append(111111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().append(111111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).append(111111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().append(111111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().append(111111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().append(111111111);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(111111111111);
-    $(this).closest('tr').next().children().eq(cellIndex).append(111111111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(111111111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().append(111111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().append(111111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(111111111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(111111111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(111111111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().append(111111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().append(111111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().append(111111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).append(111111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().append(111111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().append(111111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().next().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev().append(111111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next().next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).next().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().prev().append(111);
-    $(this).closest('tr').prev().prev().prev().prev().children().eq(cellIndex).prev().prev().prev().prev().append(111);
-  });
-
-  $(".rig tr td").each(function(i, obj) {
-    $(this).data("heat", $(this).text().length * clockspeed);
-    $(this).empty();
+    addHeatSpread($(this), 0, 19, education * clockspeed);
+    addHeatSpread($(this), 1, 15, education * clockspeed);
+    addHeatSpread($(this), 2, 11.25, education * clockspeed);
+    addHeatSpread($(this), 3, 7.5, education * clockspeed);
+    addHeatSpread($(this), 4, 3.75, education * clockspeed);
   });
 
   $(".rig tr td.psu").each(function(i, obj) {
+    addHeatSpread($(this), 0, 5, education);
+    addHeatSpread($(this), 1, 2.5, education);
+	
     var cellIndex = $(this).index();
-    $(this).append(1111);
-    $(this).next().append(1111);
-    $(this).next().next().append(11);
-    $(this).prev().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(11);
+	addHeat($(this).next(), 2.5, education);
+	addHeat($(this).next().next(), 2.5, education);
+	addHeat($(this).closest('tr').next().children().eq(cellIndex).next().next(), 2.5, education);
+	addHeat($(this).closest('tr').prev().children().eq(cellIndex).next().next(), 2.5, education);
   });
+  
   $(".rig tr td.psuV").each(function(i, obj) {
+    addHeatSpread($(this), 0, 5, education);
+    addHeatSpread($(this), 1, 2.5, education);
+	
     var cellIndex = $(this).index();
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(11);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(11);
-    $(this).next().append(11);
-    $(this).append(1111);
-    $(this).prev().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').next().children().eq(cellIndex).append(1111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).append(11);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().append(11);
-  });
-
-  $(".rig tr td").each(function(i, obj) {
-    $(this).data("heat", $(this).data("heat") + $(this).text().length);
-    $(this).empty();
+	addHeat($(this).closest('tr').next().children().eq(cellIndex), 2.5, education);
+	addHeat($(this).closest('tr').next().next().children().eq(cellIndex).prev(), 2.5, education);
+	addHeat($(this).closest('tr').next().next().children().eq(cellIndex), 2.5, education);
+	addHeat($(this).closest('tr').next().next().children().eq(cellIndex).next(), 2.5, education);
   });
 
   $(".rig tr td.sink").each(function(i, obj) {
@@ -197,94 +171,17 @@ calculateHeat = function() {
   });
 
   $(".rig tr td.water").each(function(i, obj) {
-    var cellIndex = $(this).index();
-    //if ($(this).data("heat") >= 100) {
-    //  $(this).addClass("overheat");
-    //  return;
-    //}
-
-    $(this).closest('tr').next().children().eq(cellIndex).next().append('111111111111111111111111111111111111111111');
-    $(this).closest('tr').next().children().eq(cellIndex).append('111111111111111111111111111111111111111111');
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append('111111111111111111111111111111111111111111');
-
-    $(this).next().append('111111111111111111111111111111111111111111');
-    $(this).append('1111111111111111111111111111');
-    $(this).prev().append('111111111111111111111111111111111111111111');
-
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append('111111111111111111111111111111111111111111');
-    $(this).closest('tr').prev().children().eq(cellIndex).append('111111111111111111111111111111111111111111');
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append('111111111111111111111111111111111111111111');
-
+    addHeatSpread($(this), 0, -30,);
+    addHeatSpread($(this), 1, -45);
   });
 
   $(".rig tr td.fan").each(function(i, obj) {
-    var cellIndex = $(this).index();
-    //if ($(this).data("heat") >= 100) {
-    //  $(this).addClass("overheat");
-    //  return;
-    //}
-
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().next().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).next().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().prev().append(111);
-    $(this).closest('tr').next().next().next().children().eq(cellIndex).prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).next().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').next().next().children().eq(cellIndex).prev().prev().prev().append(111);
-
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').next().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').next().children().eq(cellIndex).next().append(11111111);
-    $(this).closest('tr').next().children().eq(cellIndex).append(11111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().append(11111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').next().children().eq(cellIndex).prev().prev().prev().append(111);
-
-    $(this).next().next().next().append(111);
-    $(this).next().next().append(111111);
-    $(this).next().append(11111111);
-    $(this).append(11111111111);
-    $(this).prev().append(11111111);
-    $(this).prev().prev().append(111111);
-    $(this).prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).next().append(11111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).append(11111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().append(11111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').prev().children().eq(cellIndex).prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().next().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).next().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().append(111111);
-    $(this).closest('tr').prev().prev().children().eq(cellIndex).prev().prev().prev().append(111);
-
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().next().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).next().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().append(111);
-    $(this).closest('tr').prev().prev().prev().children().eq(cellIndex).prev().prev().prev().append(111);
+    addHeatSpread($(this), 0, -12);
+    addHeatSpread($(this), 1, -9);
+    addHeatSpread($(this), 2, -6);
+    addHeatSpread($(this), 3, -3);
   });
 
-  $(".rig tr td").each(function(i, obj) {
-    $(this).data("heat", $(this).data("heat") - $(this).text().length);
-    $(this).empty();
-  });
 
   var mips = 0;
   var powerMax = 0;
@@ -296,9 +193,9 @@ calculateHeat = function() {
     comp++;
 
     if ($(this).data("heat") != 0) {
-      $(this).html(Math.round($(this).data("heat") * 10, 1) / 10);
+      $(this).html(Math.round($(this).data("heat") * 100, 1) / 100);
       if ($(this).data("heat") > hottestComp) {
-        hottestComp = Math.round($(this).data("heat") * 10, 1) / 10;
+        hottestComp = Math.round($(this).data("heat") * 100, 1) / 100;
       }
     }
 
@@ -318,15 +215,15 @@ calculateHeat = function() {
         powerMax += 750;
       }
       if ($(this).hasClass("ecpu")) {
-        powerUse += 30;
+        powerUse += 30 * clockspeed;
         mips += 25000 * (clockspeed / 2 + 0.5);
       }
       if ($(this).hasClass("cpu")) {
-        powerUse += 70;
+        powerUse += 70 * clockspeed;
         mips += 30000 * (clockspeed / 4 * 3 + 0.25);
       }
       if ($(this).hasClass("hcpu")) {
-        powerUse += 150;
+        powerUse += 150 * clockspeed;
         mips += 50000 * clockspeed;
       }
       if ($(this).hasClass("fan")) {
@@ -336,7 +233,6 @@ calculateHeat = function() {
 
   });
 
-  powerUse *= clockspeed;
 
   if (powerUse > powerMax) {
     mips *= (powerMax / powerUse);
@@ -348,14 +244,10 @@ calculateHeat = function() {
   }
 
   var x = mips/100000;
-  //x = 2.2237031*Math.sqrt(x) - 0.2521033*Math.log(x) + 0.0003631*x*x*x - 0.0118249*x*x - 1.2129204;
-  //x = 1.249476*Math.sqrt(x) + 0.417513*Math.log(x) - 0.001395*x*x - 0.331211;
   x = 1.450654*Math.sqrt(x) + 0.240309*Math.log(x) - 0.001976*x*x - 0.485498;
-  //var x = 0.0052 * Math.sqrt(mips) - 0.6252;
   $("#brute").html(Math.round(10000*x)/10000);
   
   $("#mips").html(commaSeparateNumber(mips));
-  //$("#brute").html(Math.round(14900*Math.sqrt(mips/100000-0.6666666))/10000);
   $("#comp").html(comp);
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
@@ -373,13 +265,13 @@ calculateHeat = function() {
       return $(this).attr("class").replace('psuV', 'v').charAt(0).toUpperCase();
     else
       return $(this).attr("class").replace('psuV', 'v').charAt(0);
-  }).get().join('') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
+  }).get().join('') + ($('input[name="clockspeed"]:checked').val() == 1 ? '' : 'C') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
   $('#seed').val(seed);
 }
 
 $(document).ready(function() {
   //calculateHeat();
-  $('input[name="clockspeed"]').click(function(event) {
+  $('input[name="clockspeed"],input[name="education"]').click(function(event) {
     calculateHeat();
   });
 
@@ -424,6 +316,7 @@ $(document).ready(function() {
         }
       }
     $('#clock-' + str.slice(-1)).click();
+	$('#education-' + (str.slice(-2,-1) == 'C' ? 'yes' : 'no')).click();
   });
   if ((new URL(location.href)).searchParams.get('r'))
     $('#seed').val((new URL(location.href)).searchParams.get('r'));
