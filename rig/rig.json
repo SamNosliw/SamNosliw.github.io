@@ -1,0 +1,11 @@
+{
+    "rigs" : [{
+        "name":"Empty", 
+        "seed":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
+		"heat": 0
+    }, {
+        "name":"value1",
+        "seed":"hhsvhshfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC4",
+		"heat": 3
+    }]
+}
