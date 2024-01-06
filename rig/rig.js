@@ -189,6 +189,7 @@ calculateHeat = function() {
   var comp = 0;
   var overheatComp = 0;
   var hottestComp = 0;
+  var heatGain = -1000;
   $(".rig tr td").each(function(i, obj) {
     comp++;
 
@@ -196,6 +197,9 @@ calculateHeat = function() {
       $(this).html(Math.round($(this).data("heat") * 100, 1) / 100);
       if ($(this).data("heat") > hottestComp) {
         hottestComp = Math.round($(this).data("heat") * 100, 1) / 100;
+      }
+      if ($(this).data("heat") > heatGain && !($(this).hasClass("sink") || $(this).hasClass("blank"))) {
+        heatGain = Math.round($(this).data("heat") * 100, 1) / 100;
       }
     }
 
@@ -251,6 +255,8 @@ calculateHeat = function() {
   $("#comp").html(comp);
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
+  $("#heat-gain").html((heatGain > 0 ? "+" : "") + heatGain == -1000 ? 0 : heatGain);
+  $("#rig-uses").html(heatGain < 0 ? "Infinity" : Math.floor(100/heatGain));
   $("#power-use").html(powerUse);
   $("#power-max").html(powerMax);
 
@@ -270,6 +276,39 @@ calculateHeat = function() {
 }
 
 $(document).ready(function() {
+	
+	
+  fetch('https://sliw.co/rig/rig.json')
+    .then((response) => response.json())
+    .then((json) => $.each(json.rigs, function(key,rig) {
+		//$('#template-list').append("<div><h4></h4></div>");
+		$("<div>", {
+			"class": "template",
+			"data-seed": rig.seed
+		}).append($("<span>", {
+			"class": "mips",
+			text: commaSeparateNumber(0 + rig.mips) + " MIPS",
+		})).append($("<span>", {
+			"class": "heat" + (rig.heat < 0 ? " negative" : (rig.heat == 0 ? " neutral" : "")),
+			text: (rig.heat > 0 ? "+" : "") + rig.heat + "% heat",
+		})).append($("<span>", {
+			"class": "cases",
+			text: 3 - ((rig.seed.slice(0,25) == "b".repeat(25)) + (rig.seed.slice(25,50) == "b".repeat(25)) + (rig.seed.slice(50,75) == "b".repeat(25))) + " case rig",
+		})).append($("<span>", {
+			"class": "uses",
+			text: "(" + (rig.heat < 0 ? "Infinity" : Math.floor(100/rig.heat)) + " uses)",
+		})).append($("<span>", {
+			"class": "name",
+			text: rig.name,
+		})).append($("<span>", {
+			"class": "requirements",
+			text: (rig.seed.slice(-2,-1) == 'C' ? 'Requires CMT2570' : ''),
+		})).append($("<span>", {
+			"class": "overclock",
+			text: (rig.seed.slice(-1) == 0 ? "" : rig.seed.slice(-1) + "0% overclocked"),
+		})).appendTo("#template-list").click(function(event){ $("#seed").val($(event.target).closest('div').data("seed")).trigger("input");});
+	}));
+	
   //calculateHeat();
   $('input[name="clockspeed"],input[name="education"]').click(function(event) {
     calculateHeat();
@@ -417,6 +456,7 @@ $(document).ready(function() {
     document.execCommand("copy");
     $temp.remove();
   });
+  
 });
 
 getItem = function(obj) {

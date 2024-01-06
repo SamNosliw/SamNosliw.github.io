@@ -4,8 +4,9 @@
         "seed":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
 		"heat": 0
     }, {
-        "name":"value1",
-        "seed":"hhsvhshfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC4",
-		"heat": 3
+        "name":"Bug's Stable",
+        "seed":"hhsvhscfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
+		"heat": -0.77,
+		"mips": 716250
     }]
 }
