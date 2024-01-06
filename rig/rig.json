@@ -1,22 +1,53 @@
 {
     "rigs" : [{
-        "name":"Empty", 
-        "seed":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
+        "name": "Empty", 
+        "seed": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
 		"heat": 0
     }, {
-        "name":"Bug's Stable",
-        "seed":"hhsvhscfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
+        "name": "Bug's Stable",
+        "seed": "hhsvhscfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
 		"heat": -0.77,
 		"mips": 716250
     }, {
-        "name":"Reshula's Stable",
-        "seed":"hshshhhfhhsfsfshchchhshshvvvvvVVVVVefefeeeeeeeeeeebbbbbbbbbbbbbbbbbbbbbbbbbC5",
+        "name": "Reshula's Stable",
+        "seed": "hshshhhfhhsfsfshchchhshshvvvvvVVVVVefefeeeeeeeeeeebbbbbbbbbbbbbbbbbbbbbbbbbC5",
 		"heat": -0.02,
 		"mips": 1463750
     }, {
-        "name":"Reshula's Stable Expanded",
-        "seed":"hshshhhfhhsfsfshchchhshshcpPpPcffvcpPvVvvvVfVVVpPchshshhchchsfsfshhfhhhshshC5",
+        "name": "Reshula's Stable Expanded",
+        "seed": "hshshhhfhhsfsfshchchhshshcpPpPcffvcpPvVvvvVfVVVpPchshshhchchsfsfshhfhhhshshC5",
 		"heat": -0.02,
 		"mips": 2280000
-    }]
+    }],
+	"components" : {
+		"ecpu" : {
+			"id": 1,
+			"name": "ECPU"
+		},
+		"cpu" : {
+			"id": 2,
+			"name": "CPU"
+		},
+		"hcpu" : {
+			"id": 3,
+			"name": "HCPU"
+		},
+		"fan" : {
+			"id": 4,
+			"name": "Fan"
+		},
+		"water" : {
+			"id": 5
+			"name": "Water Block"
+		},
+		"sink" : {
+			"id": 6
+			"name": "Heat Sink"
+		},
+		"psu" : {
+			"vartiant": "psuV",
+			"id": 7,
+			"name": "PSU"
+		}
+	}
 }
