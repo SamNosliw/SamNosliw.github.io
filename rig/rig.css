@@ -30,14 +30,14 @@
 	font-size: 0.6em;
 	color: red;
 	text-align: right;
-	width: 50%;
+	width: 60%;
 }
 
 .template .uses {
 	font-size: 0.6em;
 	color: red;
 	text-align: right;
-	width: 50%;
+	width: 30%;
 }
 
 .template .overclock {
@@ -54,21 +54,21 @@
 }
 
 .template .neutral {
-	color: blue;
+	color: black;
 }
 
 .template .negative {
-	color: skyblue;
+	color: blue;
 }
 
 .template .mips {
 	font-size: 0.6em;
-	width: 50%;
+	width: 40%;
 }
 
 .template .cases {
 	font-size: 0.6em;
-	width: 50%;
+	width: 70%;
 }
 
 .template .name {

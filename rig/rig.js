@@ -282,6 +282,7 @@ $(document).ready(function() {
     .then((response) => response.json())
     .then((json) => $.each(json.rigs, function(key,rig) {
 		//$('#template-list').append("<div><h4></h4></div>");
+		var caseCount = 3 - ((rig.seed.slice(0,25) == "b".repeat(25)) + (rig.seed.slice(25,50) == "b".repeat(25)) + (rig.seed.slice(50,75) == "b".repeat(25)));
 		$("<div>", {
 			"class": "template",
 			"data-seed": rig.seed
@@ -293,9 +294,9 @@ $(document).ready(function() {
 			text: (rig.heat > 0 ? "+" : "") + rig.heat + "% heat",
 		})).append($("<span>", {
 			"class": "cases",
-			text: 3 - ((rig.seed.slice(0,25) == "b".repeat(25)) + (rig.seed.slice(25,50) == "b".repeat(25)) + (rig.seed.slice(50,75) == "b".repeat(25))) + " case rig",
+			text: caseCount + " case rig (" + commaSeparateNumber(rig.mips/caseCount) + " MIPS per case)",
 		})).append($("<span>", {
-			"class": "uses",
+			"class": "uses" + (rig.heat < 0 ? " negative" : (rig.heat == 0 ? " neutral" : "")),
 			text: "(" + (rig.heat < 0 ? "Infinity" : Math.floor(100/rig.heat)) + " uses)",
 		})).append($("<span>", {
 			"class": "name",
