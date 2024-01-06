@@ -1,8 +1,31 @@
+let settings;
+	
+$.getJSON("https://sliw.co/rig/rig.json", function(data) {
+	settings = data;
+	countComponents();
+});
+
 function commaSeparateNumber(val) {
   while (/(\d+)(\d{3})/.test(val.toString())) {
     val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
   }
   return val;
+}
+
+function countComponents() {
+  $("#component-list").empty();
+  $("<tr>").append($("<th>", {
+	  text: "Component"
+  })).append($("<th>", {
+	  text: "Count"
+  })).appendTo("#component-list");
+  $.each(settings.components, function(key,component) {
+	  $("<tr>").append($("<td>", {
+		  text: component.name
+	  })).append($("<td>", {
+		  text: $("." + key).length + $("." + component.vartiant).length
+	  })).appendTo("#component-list");
+  });
 }
 
 addHeat = function(heatObject, heat, modifier = 1) {
@@ -273,10 +296,12 @@ calculateHeat = function() {
       return $(this).attr("class").replace('psuV', 'v').charAt(0);
   }).get().join('') + ($('input[name="clockspeed"]:checked').val() == 1 ? '' : 'C') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
   $('#seed').val(seed);
+  
+  if (settings)
+	  countComponents();
 }
 
 $(document).ready(function() {
-	
 	
   fetch('https://sliw.co/rig/rig.json')
     .then((response) => response.json())
