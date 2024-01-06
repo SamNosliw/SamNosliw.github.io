@@ -37,11 +37,11 @@
 			"name": "Fan"
 		},
 		"water" : {
-			"id": 5
+			"id": 5,
 			"name": "Water Block"
 		},
 		"sink" : {
-			"id": 6
+			"id": 6,
 			"name": "Heat Sink"
 		},
 		"psu" : {
