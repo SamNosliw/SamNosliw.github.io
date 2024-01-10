@@ -3,6 +3,17 @@
   margin: 1em;
 }
 
+#export-feedback {
+	margin-left: 0.5em;
+	padding: 0.25em;
+	background: greenyellow;
+	font-weight: bold;
+}
+
+.hidden {
+	display: none;
+}
+
 #component-list {
 	border: 1px solid black;
 }

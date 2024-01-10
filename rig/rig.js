@@ -221,12 +221,12 @@ calculateHeat = function() {
       if ($(this).data("heat") > hottestComp) {
         hottestComp = Math.round($(this).data("heat") * 100, 1) / 100;
       }
-      if ($(this).data("heat") > heatGain && !($(this).hasClass("sink") || $(this).hasClass("blank"))) {
+      if ($(this).data("heat") > heatGain && !($(this).hasClass("sink") || $(this).hasClass("water") || $(this).hasClass("blank"))) {
         heatGain = Math.round($(this).data("heat") * 100, 1) / 100;
       }
     }
 
-    if ($(this).data("heat") >= 100) {
+    if ($(this).data("heat") >= 100 && (!($(this).hasClass("sink") || $(this).hasClass("water") || $(this).hasClass("blank")))) {
       $(this).addClass("overheat");
     } else if ($(this).data("heat") >= 50) {
       $(this).addClass("hot");
@@ -462,25 +462,36 @@ $(document).ready(function() {
   });
   $('#copy-script').click(function() {
 	  
-	  var script = { "rig-case.0": [], "rig-case.1": [], "rig-case.2": [] };
-	  $('.rig tr td').each(function(i, obj) {
-			if ($(this).hasClass("psu") || $(this).hasClass("psuV"))
-				script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)), x2: (i%5) + ($(this).hasClass("psu") ? 1 : 0), y2: Math.floor((i%25)/5)+($(this).hasClass("psu") ? 0 : 1) });
-			else if (!($(this).hasClass("psu2") || $(this).hasClass("psuV2") || $(this).hasClass("blank")))
-			script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)) });
-		});
-	  if (script["rig-case.0"].length == 0) delete script["rig-case.0"];
-	  if (script["rig-case.1"].length == 0) delete script["rig-case.1"];
-	  if (script["rig-case.2"].length == 0) delete script["rig-case.2"];
-		
-	  $('#script-box').html(syntaxHighlight(script));
-	  
-	  
-    var $temp = $("<input>");
-    $("body").append($temp);
-    $temp.val(JSON.stringify(script)).select();
-    document.execCommand("copy");
-    $temp.remove();
+	  if (window.tornRigLayoutSwitcherVersion !== undefined) {
+		  var win = window.open('https://torn.com/loader.php?sid=crimes&rig-import=' + $('#seed').val() + '#/cracking', '_blank');
+		if (win) {
+			win.focus();
+			$('#script-box').html(syntaxHighlight({ "export": {"success" : true, "export-seed": $('#seed').val()}}));
+		} else {
+			$('#script-box').html(syntaxHighlight({ "export": {"success" : false, "reason": "Please allow popups for this website.", "export-seed": $('#seed').val()}}));
+		}
+	  } else {
+		  var script = { "rig-case.0": [], "rig-case.1": [], "rig-case.2": [] };
+		  $('.rig tr td').each(function(i, obj) {
+				if ($(this).hasClass("psu") || $(this).hasClass("psuV"))
+					script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)), x2: (i%5) + ($(this).hasClass("psu") ? 1 : 0), y2: Math.floor((i%25)/5)+($(this).hasClass("psu") ? 0 : 1) });
+				else if (!($(this).hasClass("psu2") || $(this).hasClass("psuV2") || $(this).hasClass("blank")))
+				script["rig-case." + Math.floor(i/25)].push( { x: (i%5), y: Math.floor((i%25)/5), item: getItem($(this)) });
+			});
+		  if (script["rig-case.0"].length == 0) delete script["rig-case.0"];
+		  if (script["rig-case.1"].length == 0) delete script["rig-case.1"];
+		  if (script["rig-case.2"].length == 0) delete script["rig-case.2"];
+			
+		  $('#script-box').html(syntaxHighlight(script));
+		  
+		  
+		var $temp = $("<input>");
+		$("body").append($temp);
+		$temp.val(JSON.stringify(script)).select();
+		document.execCommand("copy");
+		$temp.remove();
+		$("#export-feedback").html("Copied to clipboard!").removeClass();
+	  }
   });
   
 });
