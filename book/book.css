@@ -91,6 +91,10 @@ span.tab:hover {
 }
 div.page-content {
 	margin: 0 10px;
+	display: none;
+}
+div.page-content.first-page {
+	display: unset;
 }
 div.page-content em {
 	font-size: 0.7em;
