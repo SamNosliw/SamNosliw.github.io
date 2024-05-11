@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Special+Elite&display=swap');
+
+@font-face {
+    font-family: Barazhad;
+    src: url("fonts/Barazhad.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Barazhad;
+    font-weight: bold;
+    src: url("fonts/Barazhad Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: Barazhad;
+	font-style: italic;
+    src: url("fonts/Barazhad Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Barazhad;
+    font-weight: bold;
+	font-style: italic;
+    src: url("fonts/Barazhad Bold Italic.otf") format("opentype");
+}
+
+
+
+@font-face {
+    font-family: Davek;
+    src: url("fonts/Davek.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Davek;
+    font-weight: bold;
+    src: url("fonts/Davek Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: Davek;
+	font-style: italic;
+    src: url("fonts/Davek Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Davek;
+    font-weight: bold;
+	font-style: italic;
+    src: url("fonts/Davek Bold Italic.otf") format("opentype");
+}
+
+
+
+@font-face {
+    font-family: Iokharic;
+    src: url("fonts/Iokharic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Iokharic;
+    font-weight: bold;
+    src: url("fonts/Iokharic Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: Iokharic;
+	font-style: italic;
+    src: url("fonts/Iokharic Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Iokharic;
+    font-weight: bold;
+	font-style: italic;
+    src: url("fonts/Iokharic Bold Italic.otf") format("opentype");
+}
+
+
+
+@font-face {
+    font-family: Rellanic;
+    src: url("fonts/Rellanic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Rellanic;
+    font-weight: bold;
+    src: url("fonts/Rellanic Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: Rellanic;
+	font-style: italic;
+    src: url("fonts/Rellanic Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Rellanic;
+    font-weight: bold;
+	font-style: italic;
+    src: url("fonts/Rellanic Bold Italic.otf") format("opentype");
+}

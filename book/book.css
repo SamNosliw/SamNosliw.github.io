@@ -1,0 +1,289 @@
+body {
+	margin: 0;
+	background-color: #613500;
+	background-image: url("images/wood-pattern.png");
+	overflow-x: hidden;
+}
+img.coffee {
+	position: absolute;
+	height: 400px;
+	left: calc(50% + 100px);
+	top: 100px;
+	filter: url(#wavy2);
+	z-index: -10;
+}
+img.splat {
+	position: absolute;
+	height: 400px;
+	left: calc(50% - 600px);
+	top: 600px;
+	filter: url(#wavy2);
+}
+div.page {
+	font-family: "Nothing You Could Do", cursive;
+	border: 1px solid black;
+	height: 842px;
+	width: 595px;
+	position: absolute;
+	background: yellow;
+	left: 0; 
+	right: 0; 
+	top: 40px;
+	margin: auto; 
+	padding: 2px;
+	border-radius: 2px;
+	box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+    background: #fffef0;
+	z-index: 1;
+	
+	-webkit-transition: transform 1s ease;
+	-moz-transition: transform 1s ease;
+	-o-transition: transform 1s ease;
+	transition: transform 1s ease;
+}
+div.page:nth-child(1) {
+	font-family: Barazhad, cursive;
+	transform: rotate(5deg);
+	font-size: 14px;
+}
+div.page:nth-child(2) {
+	font-family: Iokharic, cursive;
+	transform: rotate(-3deg);
+	font-size: 14px;
+}
+div.tabs {
+	font-family: "Special Elite", system-ui;
+	transform: rotate(3deg);
+	position: absolute;
+	top: 60px;
+	left: -90px;
+}
+span.background-writing {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	display: block;
+}
+span.tab {
+	border: 1px solid black;
+	width: 90px;
+	display: block;
+	margin: 10px;
+	padding: 4px 20px 1px 2px;
+	background: red;
+	cursor: pointer;
+	border-radius: 2px;
+	transition: transform .3s ease-out;
+	box-shadow: 2px 3px 5px black, 0 0 30px #8a4d0f inset;
+    background: #fffef0;
+}
+span.tab.selected {
+	color: palegoldenrod;
+    text-shadow: 0 0 3px darkgoldenrod, 0 0 5px gold, 0 0 6px black;
+	-webkit-transition: color 0.4s ease, text-shadow 1s ease;
+	-moz-transition: color 0.4s ease, text-shadow 1s ease;
+	-o-transition: color 0.4s ease, text-shadow 1s ease;
+	transition: color 0.4s ease, text-shadow 1s ease;
+	transform: translate(-15px, 0);
+}
+span.tab:hover {
+	transform: translate(-15px, 0);
+}
+div.page-content {
+	margin: 0 10px;
+}
+div.page-content em {
+	font-size: 0.7em;
+	margin-top: 20px;
+	display: block;
+}
+h2 {
+	font-family: "Special Elite", system-ui;
+}
+h1 {
+	font-size: 3.5em;
+	text-align: center;
+	line-height: 200px;
+}
+h3 {
+	text-align: center;
+}
+hr {
+	border: none;
+	height: 5px;
+	color: maroon;
+	background-color: maroon;
+	clip-path: polygon(0% 0%, 100% 40%, 100% 60%, 0 100%);
+	margin-bottom: 10px;
+}
+span.page-details {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-size: 0.8em;
+}
+table.spell-details {
+	font-family: "Special Elite", system-ui;
+	width: 100%;
+}
+table i.fa {
+	font-size: 0.9em;
+	color: maroon;
+    text-shadow: 0 0 3px white;
+}
+tr.header {
+	font-weight: bold;
+}
+tr.footer {
+	font-family: "Special Elite", system-ui;
+}
+tr.footer td {
+	padding-top: 10px;
+}
+tr.body:nth-child(2) td {
+	padding-bottom: 20px;
+}
+table.spell-selector {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	border-collapse: collapse;
+}
+table.spell-selector td {
+	text-align: center;
+	width: 20%;
+	border-right: solid 1px maroon; 
+	border-left: solid 1px maroon;
+}
+div.notebook {
+	transform: rotate(8deg);
+	position: absolute;
+	height: 400px;
+	width: 550px;
+	left: calc(50% - 255px);
+	top: 200px;
+	border-radius: 2px;
+	box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+    background: #fffef0;
+	z-index: 1;
+	filter: url(#wavy2);
+	border: 1px solid black;
+	
+	-webkit-transition: transform 1s ease, left 1s ease, top 1s ease;
+	-moz-transition: transform 1s ease, left 1s ease, top 1s ease;
+	-o-transition: transform 1s ease, left 1s ease, top 1s ease;
+	transition: transform 1s ease, left 1s ease, top 1s ease;
+}
+div.notebook-content {
+	transform: rotate(8deg);
+	position: absolute;
+	height: 340px;
+	width: 510px;
+	left: calc(50% - 255px);
+	top: 200px;
+	z-index: 1;
+	padding: 30px 20px;
+	
+	-webkit-transition: transform 1s ease, left 1s ease, top 1s ease;
+	-moz-transition: transform 1s ease, left 1s ease, top 1s ease;
+	-o-transition: transform 1s ease, left 1s ease, top 1s ease;
+	transition: transform 1s ease, left 1s ease, top 1s ease;
+}
+span.add-object:hover {
+	box-shadow: 0 0 5px 0 #004a00, 2px 3px 20px black, 0 0 60px #004a00 inset;
+}
+span.add-object.negative:hover {
+	box-shadow: 0 0 5px 0 #a10000, 2px 3px 20px black, 0 0 60px #a10000 inset;
+}
+span.add-object {
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	color: white;
+	display: inline-block;
+	margin: 3px;
+	border-radius: 3px;
+	font-size: 1.5em;
+	box-shadow: 2px 3px 20px black, 0 0 60px #004a00 inset;
+	font-weight: bold;
+	cursor: pointer;
+}
+span.add-object.negative {
+	box-shadow: 2px 3px 20px black, 0 0 60px #a10000 inset;
+}
+span.add-health:hover {
+	box-shadow: 0 0 5px 0 maroon, 2px 3px 20px black, 0 0 60px maroon inset;
+}
+span.add-health {
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+	color: white;
+	display: inline-block;
+	margin: 3px;
+	border-radius: 3px;
+	font-size: 0.9em;
+	box-shadow: 2px 3px 20px black, 0 0 60px maroon inset;
+	font-weight: bold;
+	cursor: pointer;
+}
+#total-damage {
+	font-family: "Special Elite", system-ui;
+	font-size: 2em;
+	position: absolute;
+	bottom: 40px;
+	left: 100px;
+}
+.func-button:nth-child(1) {
+	bottom: 40px;
+}
+.func-button {
+	width: 80px;
+	padding: 4px 4px 0;
+	font-family: "Special Elite", system-ui;
+	border-radius: 1px;
+	background: maroon;
+	color: white;
+	cursor: pointer;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	box-shadow: 0 0 5px 0 black;
+}
+.func-button:hover {
+	box-shadow: 0 0 5px 0 maroon;
+}
+#animated-list {
+	width: 100%;
+}
+#animated-list td {
+	width: inherit;
+	padding: 5px 0;
+	border-top: 1px solid beige;
+}
+#animated-list td.attacked {
+	cursor: pointer;
+}
+#animated-list tr.header td {
+	border-top: none;
+	font-family: "Nothing You Could Do", cursive;
+}
+#animated-list td.success b {
+	border-top: none;
+	text-shadow: 0 0 8px green, 0 0 3px green;
+}
+#animated-list td.fail b {
+	border-top: none;
+	text-shadow: 0 0 8px red, 0 0 3px red;
+}
+#animated-list b {
+	font-size: 1.2em;
+	font-family: "Special Elite", system-ui;
+	text-shadow: 0 0 8px gold, 0 0 3px gold;
+}
+table td.dead {
+	text-decoration: line-through;
+}
+table td.gap {
+	color: beige;
+}
