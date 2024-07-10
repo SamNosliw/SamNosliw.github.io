@@ -1,24 +1,15 @@
 {
     "rigs" : [{
-        "name": "Empty", 
-        "seed": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
-		"heat": 0
-    }, {
-        "name": "Bug's Stable",
-        "seed": "hhsvhscfVshvsvhsVfVshhshhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
-		"heat": -0.77,
-		"mips": 716250
-    }, {
-        "name": "Reshula's Stable",
-        "seed": "hshshhhfhhsfsfshchchhshshvvvvvVVVVVefefeeeeeeeeeeebbbbbbbbbbbbbbbbbbbbbbbbbC5",
-		"heat": -0.02,
-		"mips": 1463750
-    }, {
-        "name": "Reshula's Stable Expanded",
-        "seed": "hshshhhfhhsfsfshchchhshshcpPpPcffvcpPvVvvvVfVVVpPchshshhchchsfsfshhfhhhshshC5",
-		"heat": -0.02,
-		"mips": 2280000
-    }],
+		"name": "Bug's Single (Stable)",
+		"seed": "hshwhwhhvshvsVhsVpPwhwhshbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
+		"heat": -31.52,
+		"mips": 750000
+	}, {
+		"name": "End Game (Stable)",
+		"seed": "hshwhwhhhshhshhshhhwhwhshpPvcvpPVfVpPfpPpPvvveeVVVhshwhwhhhshhshhshhhwhwhshC5",
+		"heat": -0.09,
+		"mips": 2503750
+	}],
 	"components" : {
 		"ecpu" : {
 			"id": 1,

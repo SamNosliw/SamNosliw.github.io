@@ -237,7 +237,7 @@ calculateHeat = function() {
 
     if ($(this).hasClass("overheat")) {
       overheatComp++;
-    } else {
+    } //} else {
       if ($(this).hasClass("psu") || $(this).hasClass("psuV")) {
         powerMax += 750;
       }
@@ -256,7 +256,7 @@ calculateHeat = function() {
       if ($(this).hasClass("fan")) {
         powerUse += 5;
       }
-    }
+    //}
 
   });
 
@@ -279,7 +279,7 @@ calculateHeat = function() {
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
   $("#heat-gain").html((heatGain > 0 ? "+" : "") + heatGain == -1000 ? 0 : heatGain);
-  $("#rig-uses").html(heatGain < 0 ? "Infinity" : Math.floor(100/heatGain));
+  $("#rig-uses").html(heatGain < 0 ? "Infinity" : Math.max(1, Math.floor(100/heatGain)));
   $("#power-use").html(powerUse);
   $("#power-max").html(powerMax);
 
@@ -294,7 +294,7 @@ calculateHeat = function() {
       return $(this).attr("class").replace('psuV', 'v').charAt(0).toUpperCase();
     else
       return $(this).attr("class").replace('psuV', 'v').charAt(0);
-  }).get().join('') + ($('input[name="clockspeed"]:checked').val() == 1 ? '' : 'C') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
+  }).get().join('') + ($('input[name="education"]:checked').val() == 1 ? '' : 'C') + $('input[name="clockspeed"]:checked').attr("id").slice(-1);
   $('#seed').val(seed);
   
   if (settings)
