@@ -279,7 +279,7 @@ calculateHeat = function() {
   $("#overheat-comp").html(overheatComp);
   $("#hottest-comp").html(hottestComp);
   $("#heat-gain").html((heatGain > 0 ? "+" : "") + heatGain == -1000 ? 0 : heatGain);
-  $("#rig-uses").html(heatGain < 0 ? "Infinity" : Math.max(1, Math.floor(100/heatGain)));
+  $("#rig-uses").html(heatGain < 0 ? "Infinity" : 1 + Math.floor(100/heatGain));
   $("#power-use").html(powerUse);
   $("#power-max").html(powerMax);
 
