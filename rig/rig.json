@@ -1,5 +1,9 @@
 {
     "rigs" : [{
+		"name": "Empty", 
+        "seed": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0",
+		"heat": 0
+    }, {
 		"name": "Bug's Single (Stable)",
 		"seed": "hshwhwhhvshvsVhsVpPwhwhshbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbC5",
 		"heat": -31.52,
