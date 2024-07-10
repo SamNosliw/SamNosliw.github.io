@@ -319,7 +319,7 @@ $(document).ready(function() {
 			text: (rig.heat > 0 ? "+" : "") + rig.heat + "% heat",
 		})).append($("<span>", {
 			"class": "cases",
-			text: caseCount + " case rig (" + commaSeparateNumber(rig.mips/caseCount) + " MIPS per case)",
+			text: caseCount + " case rig (" + commaSeparateNumber(Math.round(rig.mips/caseCount)) + " MIPS per case)",
 		})).append($("<span>", {
 			"class": "uses" + (rig.heat < 0 ? " negative" : (rig.heat == 0 ? " neutral" : "")),
 			text: "(" + (rig.heat < 0 ? "Infinity" : Math.floor(100/rig.heat)) + " uses)",
